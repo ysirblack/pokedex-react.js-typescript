@@ -1,8 +1,20 @@
-import React from 'react'
+import { FaHome } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function NotFound() {
   return (
-    <div>NotFound</div>
+    <div className='hero'>
+      <div className='text-center hero-content'>
+        <div className='max-w-lg'>
+          <h1 className='text-7xl font-bold mb-8'>Oops!</h1>
+          <p className='text-4xl mb-8'>404 - Pokemon Not Found!</p>
+          <Link className='btn btn-outline btn-error' to='/'>
+            <FaHome className='mr-2' />
+            Back To Home
+          </Link>
+        </div>
+      </div>
+    </div>
   )
 }
 
