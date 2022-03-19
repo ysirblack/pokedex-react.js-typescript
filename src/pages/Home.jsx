@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useContext } from "react";
 import Spinner from "../components/layout/Spinner";
+import PokemonItem from "../components/pokemons/PokemonItem";
+import PokedexContext from "../context/pokedex/PokedexContext";
+import { v4 as uuidv4 } from "uuid";
 
 function Home() {
-  const [count, setCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [pokemons, setPokemons] = useState([{}]);
+  const { count, loading, pokemons, fetchPokemons } = useContext(PokedexContext);
 
   useEffect(() => {
     fetchPokemons();
   }, []);
-
-  const fetchPokemons = async () => {
-    const response = await fetch(`${process.env.REACT_APP_POKEMON_API_URL}/pokemon/?limit=1126`);
-
-    const data = await response.json();
-
-    setCount(data.count);
-    setPokemons(data.results);
-    setLoading(false);
-    console.log(pokemons[0].name);
-  };
 
   if (!loading) {
     return (
@@ -31,15 +20,13 @@ function Home() {
         </h1>
         <div className="grid grid-cols-2 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
           {pokemons.map((pokemon) => (
-            <p>
-              <Link to="/pokemon">{pokemon.name}</Link>
-            </p>
+            <PokemonItem key={uuidv4()} pokemon={pokemon} />
           ))}
         </div>
       </div>
     );
   } else {
-    return <Spinner />
+    return <Spinner />;
   }
 }
 
