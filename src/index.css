@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ /* .pokedex {
+  background-image: url("../public/pokedex.png");
+  background-repeat: no-repeat;
+  height: 80vh;
+}  */
+
+.position {
+  top: 28%;
+  left: 5%;
+  height: 62%;
+  width: 20%;
+}
+@media (max-width: 1528px) {
+  .position {
+    top: 28%;
+    left: 6%;
+    height: 62%;
+    width: 24%;
+  }
+}
+@media (max-width: 1278px) {
+    .position {
+      top: 28%;
+      left: 8%;
+      height: 62%;
+      width: 30%;
+    }
+}
+@media (max-width: 1023px) {
+  .position {
+    top: 28%;
+    left: 9%;
+    height: 61%;
+    width: 36%;
+  }
+}

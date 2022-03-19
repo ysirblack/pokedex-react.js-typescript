@@ -14,15 +14,25 @@ function Home() {
   if (!loading) {
     return (
       <div>
-        <h1 className="text-3xl mb-3">
-          {" "}
+        <h1 className="text-3xl">
           Search for a Pokemon among number of <span className="text-red-500">{count}!</span>
         </h1>
-        <div className="grid grid-cols-2 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
-          {pokemons.map((pokemon) => (
-            <PokemonItem key={uuidv4()} pokemon={pokemon} />
-          ))}
+        <div className="relative">
+          <img src="pokedex.png" />
+          <div className="absolute position overflow-y-scroll h-60">
+            <div className="">
+              {pokemons.map((pokemon) => (
+                <PokemonItem key={uuidv4()} pokemon={pokemon} />
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* <div className="grid grid-cols-2 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2"> */}
+          {/* {pokemons.map((pokemon) => (
+            <PokemonItem key={uuidv4()} pokemon={pokemon} />
+          ))} */}
+        {/* </div> */}
       </div>
     );
   } else {
