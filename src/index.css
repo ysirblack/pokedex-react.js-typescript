@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pokedex {
+  /* background: url("./assets/pokedex.png") center no-repeat;
+  height: 720px; */
+}
