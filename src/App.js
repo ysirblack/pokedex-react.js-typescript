@@ -6,26 +6,31 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Pokemon from "./pages/Pokemon";
 import { PokedexProvider } from "./context/pokedex/PokedexContext";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <PokedexProvider>
-      <Router>
-        <div className="flex flex-col justify-between h-screen">
-          <Navbar />
-          <main className="container mx-auto px-3">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/notfound" element={<NotFound />} />
-              <Route path="/pokemon/:pokename" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </PokedexProvider>
+    <QueryClientProvider client={queryClient}>
+      <PokedexProvider>
+        <Router>
+          <div className="flex flex-col justify-between h-screen">
+            <Navbar />
+            <main className="container mx-auto px-3">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/notfound" element={<NotFound />} />
+                <Route path="/pokemon/:pokename" element={<Home />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </PokedexProvider>
+    </QueryClientProvider>
   );
 }
 
