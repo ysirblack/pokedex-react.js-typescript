@@ -5,10 +5,10 @@ import PokedexContext from "../../context/pokedex/PokedexContext";
 import { useContext, useEffect } from "react";
 
 function PokemonItem({ name, number }) {
-  const { pokemon_, fetchPokemonNames } = useContext(PokedexContext);
+  const { pokemon_, fetchPokemonName } = useContext(PokedexContext);
 
   function handleClick() {
-    fetchPokemonNames(name);
+    fetchPokemonName(name);
   }
 
   return (

@@ -6,9 +6,9 @@ import PokedexContext from "../../context/pokedex/PokedexContext";
 
 function PokemonList() {
 
-  const { pokemonNames,fetchPokemonNames } = useContext(PokedexContext);
+  const { pokemonNames } = useContext(PokedexContext);
   let number = 0;
-  
+
   return (
       <div>
         {pokemonNames.map((pokemon) => (

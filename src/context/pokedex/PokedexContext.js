@@ -21,7 +21,7 @@ export const PokedexProvider = ({ children }) => {
     setLoading(false);
   };
 
-  const fetchPokemonNames = async (name) => {
+  const fetchPokemonName = async (name) => {
 
     const response = await fetch(`${POKEMON_API_URL}/pokemon/${name}`);
 
@@ -39,7 +39,7 @@ export const PokedexProvider = ({ children }) => {
         pokemonNames,
         pokemon_,
         fetchPokemons,
-        fetchPokemonNames,
+        fetchPokemonName,
       }}
     >
       {children}
