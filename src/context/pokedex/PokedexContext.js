@@ -8,7 +8,7 @@ export const PokedexProvider = ({ children }) => {
 
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [pokemons, setPokemons] = useState([{}]);
+  const [pokemonNames, setPokemonNames] = useState([]);
   const [pokemon_, setPokemon] = useState({})
 
   const fetchPokemons = async () => {
@@ -17,15 +17,16 @@ export const PokedexProvider = ({ children }) => {
     const data = await response.json();
 
     setCount(data.count);
-    setPokemons(data.results);
+    setPokemonNames(data.results);
     setLoading(false);
   };
 
   const fetchPokemonNames = async (name) => {
+
     const response = await fetch(`${POKEMON_API_URL}/pokemon/${name}`);
 
     const data = await response.json();
-    console.log(data.id);
+    console.log(data);
     setPokemon(data);
   };
 
@@ -35,7 +36,7 @@ export const PokedexProvider = ({ children }) => {
       value={{
         count,
         loading,
-        pokemons,
+        pokemonNames,
         pokemon_,
         fetchPokemons,
         fetchPokemonNames,

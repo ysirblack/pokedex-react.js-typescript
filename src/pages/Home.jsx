@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import Spinner from "../components/layout/Spinner";
-import PokemonItem from "../components/pokemons/PokemonItem";
 import PokedexContext from "../context/pokedex/PokedexContext";
-import { v4 as uuidv4 } from "uuid";
+import PokemonList from "../components/pokemons/PokemonList";
 
 function Home() {
-  const { count, loading, pokemons, fetchPokemons } = useContext(PokedexContext);
+  const { count, loading, fetchPokemons } = useContext(PokedexContext);
 
   useEffect(() => {
     fetchPokemons();
@@ -20,19 +19,9 @@ function Home() {
         <div className="relative">
           <img src="pokedex.png" />
           <div className="absolute position overflow-y-scroll h-60">
-            <div className="">
-              {pokemons.map((pokemon) => (
-                <PokemonItem key={uuidv4()} pokemon={pokemon} />
-              ))}
-            </div>
+            <PokemonList />
           </div>
         </div>
-
-        {/* <div className="grid grid-cols-2 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2"> */}
-          {/* {pokemons.map((pokemon) => (
-            <PokemonItem key={uuidv4()} pokemon={pokemon} />
-          ))} */}
-        {/* </div> */}
       </div>
     );
   } else {
