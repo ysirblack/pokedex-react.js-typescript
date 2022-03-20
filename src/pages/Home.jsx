@@ -21,7 +21,7 @@ function Home() {
           <div className="absolute position-names overflow-y-scroll h-60">
             <PokemonList />
           </div>
-          {pokemon_.id > 0 && <PokemonStats pokemon = {pokemon_}/>}
+          {pokemon_.id > 0 && <PokemonStats pokemon = {pokemon_} />}
         </div>
       </div>
     );

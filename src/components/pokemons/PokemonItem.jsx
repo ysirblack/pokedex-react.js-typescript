@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import PokedexContext from "../../context/pokedex/PokedexContext";
 import { useContext, useEffect } from "react";
 
+
 function PokemonItem({ name, number }) {
   const { pokemon_, fetchPokemonName } = useContext(PokedexContext);
+
 
   function handleClick() {
     fetchPokemonName(name);
