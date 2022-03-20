@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import PokedexContext from "../../context/pokedex/PokedexContext";
-import { useContext, useEffect } from "react";
-import { useQuery } from "react-query";
+import { useContext } from "react";
 
 function PokemonItem({ name, number }) {
-  const { pokemon_, fetchPokemonName,setName } = useContext(PokedexContext);
+  const { setName } = useContext(PokedexContext);
 
   const handleClick = () => {
-    //fetchPokemonName(name);
-   
     setName(name);
   }
-   //const { isLoading, data, isError, error } = useQuery(name, fetchPokemonName);
 
   return (
     <div className="container flex flex-row mb-1 justify-between">

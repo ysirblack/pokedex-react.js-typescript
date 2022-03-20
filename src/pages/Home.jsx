@@ -1,22 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Spinner from "../components/layout/Spinner";
 import PokedexContext from "../context/pokedex/PokedexContext";
 import PokemonList from "../components/pokemons/PokemonList";
 import PokemonStats from "../components/pokemons/PokemonStats";
 import EmptyStat from "../components/layout/EmptyStat";
 import { useQuery } from "react-query";
-import axios from "axios";
+
 
 function Home() {
-  const { count, loading, pokemon_, isStats, fetchPokemons } = useContext(PokedexContext);
-
-  // useEffect(() => {
-  //   fetchPokemons();
-  // }, []);
-
-  // console.log(pokemon_.name);
+  const { isStats, fetchPokemons } = useContext(PokedexContext);
 
   const { isLoading, data, isError, error } = useQuery("names", fetchPokemons);
+
+  if(isError){
+    console.log(error);
+  }
 
   if (!isLoading) {
     return (
@@ -29,7 +27,7 @@ function Home() {
           <div className="absolute position-names overflow-y-scroll h-60">
             <PokemonList names={data.data.results} />
           </div>
-          {isStats ? <PokemonStats pokemon={pokemon_} /> : <EmptyStat />}
+          {isStats ? <PokemonStats /> : <EmptyStat />}
         </div>
       </div>
     );
@@ -39,4 +37,3 @@ function Home() {
 }
 
 export default Home;
-// {pokemon_.id > 0 ? <PokemonStats pokemon={pokemon_} /> : <EmptyStat />}

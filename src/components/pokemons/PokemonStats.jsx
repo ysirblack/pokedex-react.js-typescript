@@ -4,15 +4,15 @@ import { useContext } from "react";
 import spinner from "../layout/assets/spinner.gif";
 import { useQuery } from "react-query";
 
-function PokemonStats({ pokemon }) {
-  const { statsLoading,pokename,fetchPokemonName } = useContext(PokedexContext);
-  console.log(pokename)
+function PokemonStats() {
+  const { pokename, fetchPokemonName } = useContext(PokedexContext);
+
   const { isLoading, data, isError, error } = useQuery(pokename, () =>{ return fetchPokemonName(pokename)});
 
   if(isError){
     console.log(error);
   }
-  
+
   if (!isLoading) {
     return (
       <div className="absolute position-stats overflow-y-scroll h-60">
