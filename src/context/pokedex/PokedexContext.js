@@ -10,7 +10,9 @@ export const PokedexProvider = ({ children }) => {
   const [isStats, setIsStats] = useState(false);
   const [pokename, setPokeName] = useState("");
 
-  const fetchPokemons = async () => {
+
+  // fetches all pokemon names 
+  const fetchPokemons = async () => { 
     try {
       return axios.get(`${POKEMON_API_URL}/pokemon/?limit=1126`);
     } catch (error) {
@@ -18,11 +20,13 @@ export const PokedexProvider = ({ children }) => {
     }
   }
 
+  //sets the selected pokemon name to be shown in the stats section
   function setName(name) {
     setIsStats(true);
     setPokeName(name);
   }
 
+  //gets pokemon stats acording to the given name
   const fetchPokemonName = async (name) => {
       try {
         return axios.get(`${POKEMON_API_URL}/pokemon/${name}`);

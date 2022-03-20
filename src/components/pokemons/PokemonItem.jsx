@@ -7,6 +7,7 @@ import { useContext } from "react";
 function PokemonItem({ name, number }) {
   const { setName } = useContext(PokedexContext);
 
+  //when a pokemon name clicked it will be set the name of it
   const handleClick = () => {
     setName(name);
   }
