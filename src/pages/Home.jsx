@@ -6,13 +6,30 @@ import PokemonStats from "../components/pokemons/PokemonStats";
 import EmptyStat from "../components/layout/EmptyStat";
 import { useQuery } from "react-query";
 
-
 function Home() {
-  const { isStats, fetchPokemons } = useContext(PokedexContext);
+  const { fetchPokemons, pokename, hovered, fetchPokemonName, clicked } =
+    useContext(PokedexContext);
 
   const { isLoading, data, isError, error } = useQuery("names", fetchPokemons);
 
-  if(isError){
+  const response = useQuery(
+    pokename,
+    () => {
+     console.log(pokename);
+      //setHovered(false);
+      return fetchPokemonName(pokename);
+    },
+    { enabled: hovered }
+  );
+
+  // if(response.isError){
+  //   console.log(response.error);
+  // }
+
+  // console.log(response);
+  //console.log(response.data);
+
+  if (isError) {
     console.log(error);
   }
 
@@ -23,11 +40,12 @@ function Home() {
           Search from <span className="text-red-500">{data.data.count}</span> Pokemon!
         </h1>
         <div className="relative">
-          <img src="pokedex.png" />
+          <img src="pokedex.png" alt="pokedex" />
           <div className="absolute position-names overflow-y-scroll h-60">
             <PokemonList names={data.data.results} />
           </div>
-          {isStats ? <PokemonStats /> : <EmptyStat />}
+          {clicked ? <PokemonStats pokemon= {response.data.data} isLoading={response.isLoading} /> : <EmptyStat />}
+       
         </div>
       </div>
     );
@@ -37,3 +55,5 @@ function Home() {
 }
 
 export default Home;
+
+// {isStats ? <PokemonStats /> : <EmptyStat />}

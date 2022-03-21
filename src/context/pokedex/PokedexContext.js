@@ -7,9 +7,9 @@ const POKEMON_API_URL = process.env.REACT_APP_POKEMON_API_URL;
 
 export const PokedexProvider = ({ children }) => {
 
-  const [isStats, setIsStats] = useState(false);
   const [pokename, setPokeName] = useState("");
-
+  const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   // fetches all pokemon names 
   const fetchPokemons = async () => { 
@@ -22,8 +22,12 @@ export const PokedexProvider = ({ children }) => {
 
   //sets the selected pokemon name to be shown in the stats section
   function setName(name) {
-    setIsStats(true);
     setPokeName(name);
+    setHovered(true);
+  }
+
+  function setClick(condition) {
+    setClicked(condition);
   }
 
   //gets pokemon stats acording to the given name
@@ -38,11 +42,15 @@ export const PokedexProvider = ({ children }) => {
   return (
     <PokedexContext.Provider
       value={{
-        isStats,
+
         pokename,
+        hovered,
+        clicked,
         fetchPokemons,
         fetchPokemonName,
         setName,
+        setHovered,
+        setClick
       }}
     >
       {children}
