@@ -1,9 +1,25 @@
 import React from "react";
 import spinner from "../layout/assets/spinner.gif";
 
+interface Pokemon {
+  status: string;
+  data: {
+    data: {
+      types: Array<any>;
+      id: number;
+      stats: Array<any>;
+      sprites: {
+        front_default: string;
+      };
+    };
+  };
+}
 
-const PokemonStats = React.memo(({ pokemon }) => {
+interface PokemonStatsProps {
+  pokemon: Pokemon;
+}
 
+const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
   let pokemon_;
 
   console.log("PokemonStats Rendered");
@@ -18,7 +34,7 @@ const PokemonStats = React.memo(({ pokemon }) => {
         <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Attack: {pokemon_.stats[1].base_stat} </p>
         <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Defense: {pokemon_.stats[2].base_stat} </p>
         <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Speed: {pokemon_.stats[5].base_stat} </p>
-        <img src={pokemon_.sprites.front_default} className="w-4/6 place-self-center" alt="Pokeimage"/>
+        <img src={pokemon_.sprites.front_default} className="w-4/6 place-self-center" alt="Pokeimage" />
       </div>
     );
   } else {

@@ -1,7 +1,8 @@
 import React from "react";
 import spinner from "./assets/spinner.gif";
 
-function Spinner() {
+
+const Spinner: React.FC = () => {
   return (
     <div className="w-100 mt-20">
       <img width={180} src={spinner} className="text-center mx-auto" alt="Loading..." />

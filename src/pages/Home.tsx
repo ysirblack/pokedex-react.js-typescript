@@ -5,9 +5,10 @@ import PokemonList from "../components/pokemons/PokemonList";
 import PokemonStats from "../components/pokemons/PokemonStats";
 import EmptyStat from "../components/layout/EmptyStat";
 import { useQuery } from "react-query";
+import { PokeContextType } from "../context/pokedex/PokedexContext";
 
 function Home() {
-  const { fetchPokemons, pokename, hovered, fetchPokemonName, clicked } = useContext(PokedexContext);
+  const { fetchPokemons, pokename, hovered, fetchPokemonName, clicked } = useContext(PokedexContext) as PokeContextType;
 
   const { isLoading, data, isError, error } = useQuery("names", fetchPokemons);
 
@@ -45,5 +46,3 @@ function Home() {
 }
 
 export default Home;
-
-// {isStats ? <PokemonStats /> : <EmptyStat />}

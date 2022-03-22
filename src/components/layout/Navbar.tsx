@@ -3,7 +3,11 @@ import { MdCatchingPokemon } from "react-icons/md";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Navbar({ title }) {
+interface  NavbarProps {
+  title: string,
+}
+
+const Navbar: React.FC<NavbarProps>= ({ title }) => {
   return (
     <nav className="navbar mb-12 shadow-lg  bg-red-500 text-neutral-content">
       <div className="container mx-auto">
@@ -32,8 +36,8 @@ Navbar.defaultProps = {
   title: "Pokedex",
 };
 
-Navbar.propTypes = {
-  title: PropTypes.string,
-};
+// Navbar.propTypes = {
+//   title: PropTypes.string,
+// };
 
 export default Navbar;

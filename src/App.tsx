@@ -34,7 +34,7 @@ function App() {
       <PokedexProvider>
         <Router>
           <div className="flex flex-col justify-between h-screen">
-            <Navbar />
+            <Navbar title ="Pokedex"/>
             <main className="container mx-auto px-3">
               <Routes>
                 <Route path="/" element={<Home />} />

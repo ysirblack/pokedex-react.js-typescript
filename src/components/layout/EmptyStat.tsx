@@ -1,7 +1,7 @@
 import React from "react";
 import { SiPokemon } from "react-icons/si";
 
-function EmptyStat() {
+const EmptyStat:React.FC = () => {
   return (
     <div className="absolute position-stats overflow-y-scroll h-60">
         <SiPokemon className="text-8xl" />
