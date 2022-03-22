@@ -1,23 +1,7 @@
 import React from "react";
 import spinner from "../layout/assets/spinner.gif";
+import {PokemonStatsProps} from "../../lib/interfaces/interfaces"
 
-interface Pokemon {
-  status: string;
-  data: {
-    data: {
-      types: Array<any>;
-      id: number;
-      stats: Array<any>;
-      sprites: {
-        front_default: string;
-      };
-    };
-  };
-}
-
-interface PokemonStatsProps {
-  pokemon: Pokemon;
-}
 
 const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
   let pokemon_;

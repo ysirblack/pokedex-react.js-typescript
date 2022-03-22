@@ -3,12 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import PokedexContext from "../../context/pokedex/PokedexContext";
 import { useContext } from "react";
-import { PokeContextType } from "../../context/pokedex/PokedexContext";
+import { PokeContextType } from "../../lib/interfaces/interfaces";
+import { PokemonItemProps } from "../../lib/interfaces/interfaces";
 
-interface PokemonItemProps {
-    name: string,
-    number: number
-}
 
 const PokemonItem: React.FC<PokemonItemProps> = ({ name, number }) => {
   const { setName, setHovered, setClick } = useContext(PokedexContext) as PokeContextType;

@@ -1,26 +1,16 @@
-import { createContext, useState } from "react";
 import axios from "axios";
 import * as React from 'react';
+import { PokeContextType } from "../../lib/interfaces/interfaces";
 
-export interface PokeContextType {
-  pokename: string;
-  hovered: boolean;
-  clicked: boolean;
-  fetchPokemons: Function;
-  fetchPokemonName:(name: string) => void;
-  setName: (name: string) => void;
-  setHovered:Function;
-  setClick: (condition: boolean) => void;
-}
 
 const PokedexContext = React.createContext<PokeContextType | null>(null)
 
 const POKEMON_API_URL = process.env.REACT_APP_POKEMON_API_URL;
 
 export const PokedexProvider : React.FC<React.ReactNode> = ({ children }) => {
-  const [pokename, setPokeName] = useState("");
-  const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [pokename, setPokeName] = React.useState("");
+  const [hovered, setHovered] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
 
   // fetches all pokemon names
   const fetchPokemons = async () => {
@@ -69,19 +59,3 @@ export const PokedexProvider : React.FC<React.ReactNode> = ({ children }) => {
 };
 
 export default PokedexContext;
-// return (
-//   <PokedexContext.Provider
-//     value={{
-//       pokename,
-//       hovered,
-//       clicked,
-//       fetchPokemons,
-//       fetchPokemonName,
-//       setName,
-//       setHovered,
-//       setClick,
-//     }}
-//   >
-//     {children}
-//   </PokedexContext.Provider>
-// );

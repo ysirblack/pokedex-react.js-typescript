@@ -1,14 +1,7 @@
 import React from "react";
 import PokemonItem from "./PokemonItem";
 import { v4 as uuidv4 } from "uuid";
-
-interface Names {
-  name: string
-}
-
-interface PokemonListProps{
-  names: Array<Names>
-}
+import {PokemonListProps} from "../../lib/interfaces/interfaces";
 
 
 const PokemonList: React.FC<PokemonListProps> = React.memo(({ names }) => {
