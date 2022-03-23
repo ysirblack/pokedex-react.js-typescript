@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { PokeContextType } from "../../lib/interfaces/interfaces";
 import { PokemonItemProps } from "../../lib/interfaces/interfaces";
 
-
 const PokemonItem: React.FC<PokemonItemProps> = ({ name, number }) => {
   const { setName, setHovered, setClick } = useContext(PokedexContext) as PokeContextType;
 
@@ -25,17 +24,14 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ name, number }) => {
   };
 
   return (
-    <div className="container flex flex-row mb-3 justify-between">
+    <div className="container flex flex-row mb-3 justify-between text-xs sm:text-xs md:text-base lg:text-lg">
       <p onClick={handleClick} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
         <Link to={`/pokemon/${name}`}>{name} </Link>
       </p>
       <p className="mr-5"> {number} </p>
     </div>
   );
-}
-
-PokemonItem.propTypes = {
-  name: PropTypes.string.isRequired,
 };
+
 
 export default PokemonItem;

@@ -1,7 +1,6 @@
 import React from "react";
 import spinner from "../layout/assets/spinner.gif";
-import {PokemonStatsProps} from "../../lib/interfaces/interfaces"
-
+import { PokemonStatsProps } from "../../lib/interfaces/interfaces";
 
 const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
   let pokemon_;
@@ -11,13 +10,14 @@ const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
   if (pokemon.status === "success") {
     pokemon_ = pokemon.data.data;
     return (
-      <div className="absolute position-stats overflow-y-scroll h-60">
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon ID: {pokemon_.id} </p>
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Type: {pokemon_.types[0].type.name} </p>
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon HP: {pokemon_.stats[0].base_stat} </p>
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Attack: {pokemon_.stats[1].base_stat} </p>
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Defense: {pokemon_.stats[2].base_stat} </p>
-        <p className="mb-1 lg:text-lg md:text-base sm:text-sm">Pokemon Speed: {pokemon_.stats[5].base_stat} </p>
+      <div className="absolute position-stats overflow-y-scroll h-60 text-xs sm:text-xs md:text-base lg:text-base">
+        <p className="mb-1 lg:mb-0">Pokemon Name: {pokemon_.name} </p>
+        <p className="mb-1 lg:mb-0 ">Pokemon ID: {pokemon_.id} </p>
+        <p className="mb-1 lg:mb-0">Pokemon Type: {pokemon_.types[0].type.name} </p>
+        <p className="mb-1 lg:mb-0">Pokemon HP: {pokemon_.stats[0].base_stat} </p>
+        <p className="mb-1 lg:mb-0">Pokemon Attack: {pokemon_.stats[1].base_stat} </p>
+        <p className="mb-1 lg:mb-0">Pokemon Defense: {pokemon_.stats[2].base_stat} </p>
+        <p className="mb-1 lg:mb-0">Pokemon Speed: {pokemon_.stats[5].base_stat} </p>
         <img src={pokemon_.sprites.front_default} className="w-4/6 place-self-center" alt="Pokeimage" />
       </div>
     );
@@ -30,5 +30,20 @@ const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
     );
   }
 });
+
+PokemonStats.defaultProps = {
+  pokemon: { 
+    status: "waiting..", 
+    data: { 
+      data: { 
+        name: "loading..", 
+        types: [{ type: { name: "loading.." } }],
+        id:0,
+        stats:[{base_stat:"loading.."}],
+        sprites:{front_default:"loading.."},
+      }
+    }
+  }
+}
 
 export default PokemonStats;

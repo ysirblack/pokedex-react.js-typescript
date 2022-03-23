@@ -1,9 +1,9 @@
 import React from "react";
 import { MdCatchingPokemon } from "react-icons/md";
 import { Link } from "react-router-dom";
-import {NavbarProps} from "../../lib/interfaces/interfaces";
+import { NavbarProps } from "../../lib/interfaces/interfaces";
 
-const Navbar: React.FC<NavbarProps>= ({ title }) => {
+const Navbar: React.FC<NavbarProps> = ({ title }) => {
   return (
     <nav className="navbar mb-12 shadow-lg  bg-red-500 text-neutral-content">
       <div className="container mx-auto">
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps>= ({ title }) => {
       </div>
     </nav>
   );
-}
+};
 Navbar.defaultProps = {
   title: "Pokedex",
 };

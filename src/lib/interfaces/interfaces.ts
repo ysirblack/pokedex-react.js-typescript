@@ -1,10 +1,19 @@
+type Type = {
+  type: {
+    name: string
+  }
+}
+type BaseStat = {
+  base_stat: string
+}
 export interface IPokemon {
   status: string;
   data: {
     data: {
-      types: Array<any>;
+      name:string;
+      types: Array<Type>
       id: number;
-      stats: Array<any>;
+      stats: Array<BaseStat>
       sprites: {
         front_default: string;
       };
