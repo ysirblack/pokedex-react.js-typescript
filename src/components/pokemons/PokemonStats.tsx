@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import spinner from "../layout/assets/spinner.gif";
-import { PokemonStatsProps } from "../../lib/interfaces/interfaces";
+import { PokeContextType } from "../../lib/interfaces/interfaces";
+import PokedexContext from "../../context/pokedex/PokedexContext";
 
-const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
+const PokemonStats: React.FC = React.memo(() => {
+  const { response, stats } = useContext(PokedexContext) as PokeContextType;
+
   let pokemon_;
 
   console.log("PokemonStats Rendered");
 
-  if (pokemon.status === "success") {
-    pokemon_ = pokemon.data.data;
+  if (!stats.isLoading || !response.isLoading) {
+    if (!stats.data)
+      return (
+        <div className="absolute position-stats overflow-y-scroll h-60 text-xs sm:text-xs md:text-base lg:text-base">
+          Something went wrong While loading, please click again
+        </div>
+      );
+
+    pokemon_ = stats.data.data;
     return (
       <div className="absolute position-stats overflow-y-scroll h-60 text-xs sm:text-xs md:text-base lg:text-base">
         <p className="mb-1 lg:mb-0">Pokemon Name: {pokemon_.name} </p>
@@ -30,20 +40,5 @@ const PokemonStats: React.FC<PokemonStatsProps> = React.memo(({ pokemon }) => {
     );
   }
 });
-
-PokemonStats.defaultProps = {
-  pokemon: { 
-    status: "waiting..", 
-    data: { 
-      data: { 
-        name: "loading..", 
-        types: [{ type: { name: "loading.." } }],
-        id:0,
-        stats:[{base_stat:"loading.."}],
-        sprites:{front_default:"loading.."},
-      }
-    }
-  }
-}
 
 export default PokemonStats;

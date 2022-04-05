@@ -10,7 +10,7 @@ const PokemonList: React.FC<PokemonListProps> = React.memo(({ names }) => {
 });
 
 PokemonList.defaultProps = {
-  names: [{name: "loading.."}]
-}
+  names: [{ name: "loading.." }],
+};
 
 export default PokemonList;
