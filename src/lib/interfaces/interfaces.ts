@@ -1,20 +1,10 @@
-type Type = {
-  type: {
-    name: string;
-  };
-};
-type BaseStat = {
-  base_stat: string;
-};
 export interface IPokemon {
   status: string;
-  isLoading: boolean;
   data: {
     data: {
-      name: string;
-      types: Array<Type>;
+      types: Array<any>;
       id: number;
-      stats: Array<BaseStat>;
+      stats: Array<any>;
       sprites: {
         front_default: string;
       };
@@ -22,42 +12,46 @@ export interface IPokemon {
   };
 }
 
+export interface PokemonStatsProps {
+  pokemon: IPokemon;
+}
+
 export interface PokeContextType {
   pokename: string;
-  firstClicked: boolean;
-  response: IPokemon;
-  stats: IPokemon;
-  fetchPokemons: () => void;
-  fetchPokemonName: (name: string) => void;
+  hovered: boolean;
+  clicked: boolean;
+  fetchPokemons: ()=>void;
+  fetchPokemonName:(name: string) => void;
   setName: (name: string) => void;
-  setClick: () => void;
+  setHovered:Function;
+  setClick: (condition: boolean) => void;
 }
 
 export interface PokemonItemProps {
-  name: string;
-  number: number;
+  name: string,
+  number: number
 }
 
 interface Names {
-  name: string;
+  name: string
 }
 
-export interface PokemonListProps {
-  names: Array<Names>;
+export interface PokemonListProps{
+  names: Array<Names>
 }
 
-export interface NavbarProps {
-  title: string;
+export interface  NavbarProps {
+  title: string,
 }
 
 export interface IQuery {
-  isLoading: boolean;
-  data: {
+  isLoading : boolean,
+  data : {
     data: {
-      count: number;
-      results: Array<Names>;
-    };
-  };
-  isError: boolean;
-  error: Error;
+      count: number
+      results: Array<Names>
+    }
+  }
+  isError: boolean,
+  error: Error,
 }

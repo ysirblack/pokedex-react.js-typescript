@@ -2,7 +2,7 @@ import React from "react";
 import { SiPokemon } from "react-icons/si";
 const footerYear = new Date().getFullYear();
 
-const Footer: React.FC = () => {
+const Footer:React.FC = () => {
   return (
     <footer className="footer pb-3 bg-red-600 text-primary-content footer-center">
       <div>
@@ -12,6 +12,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
